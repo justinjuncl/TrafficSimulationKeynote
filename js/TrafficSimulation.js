@@ -2388,7 +2388,9 @@ Vehicle.prototype = {
 
 		var s = vehicleSideBehind.speed;
 
-		if ( s > this.speed ) {
+		if ( this.speed === 0 ) return true;
+
+		if ( s > 3 * this.speed ) {
 
 			return false;
 
@@ -2688,7 +2690,7 @@ Vehicle.prototype = {
 
 		}
 
-		if (this.stopTime >= 30 && this.delta <= 0) {
+		if ( this.stopTime >= 40 && this.delta <= 0 ) {
 
 			this.removeLocation();
 			this.removeVehicle();

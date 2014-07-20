@@ -105,29 +105,14 @@
 					</div>
 				</section>
 
-				<section>
-
-					<section data-state="model">
-						<h2>모델</h2>
-						<ul>
-							<li>장소</li>
-							<li>차</li>
-							<li>사이클</li>
-						</ul>
-					</section>
-
-					<section>
-						<ul>
-							<li>제한 속도를 지키려는 정도</li>
-							<li>도로 길이</li>
-							<li>앞차와의 거리를 유지하려는 정도</li>
-							<li>차선 변경을 </li>
-							<li>시야</li>
-							<li>트럭에 대한 부담감</li>
-							<li>그 외 여러가지 ... </li>
-						</ul>
-					</section>
-
+				<section data-state="model">
+					<h2>모델</h2>
+					<ul>
+						<li>장소</li>
+						<li>차</li>
+						<li>사이클</li>
+					</ul>
+					<p style="margin-top: 100px;"><a href="#/5/1"><small>시뮬레이션에 영향을 주는 요소들</small></a></p>
 				</section>
 
 				<section data-background="#4d7e65">
@@ -160,7 +145,7 @@
 
 				</section>
 
-				<section>
+				<section data-background="#4D567E">
 
 					<section data-state="zoomOut">
 						<h2>사이클</h2>
@@ -242,6 +227,7 @@
 							<li>도로의 차선 변경을 못하게 할 초반 길이</li>
 							<li>도로 길이</li>
 						</ul>
+						<p style="margin-top: 100px;"><small><a href="#/2">모델</a></small></p>
 					</section>
 
 				</section>
@@ -261,6 +247,11 @@
 						<li>교차로</li>
 						<li>곡선 도로</li>
 					</ul>
+				</section>
+
+				<section>
+					<h2></h2>
+					<h3></h3>
 				</section>
 
 				<!-- END -->
@@ -620,12 +611,27 @@ function linkify( selector ) {
 
 			var origin = new Vector2( -50, 790 );
 			var point = origin;
+			var vStop;
 
 			Reveal.configure({
 				keyboard: {
 					81: function () { traffic.start(); },
 					87: function () { traffic.pause(); },
-					69: function () { traffic.resetSimulation(); canvas.renderBlocks(); canvas.renderVehicles();}
+					69: function () { traffic.resetSimulation(); canvas.renderBlocks(); canvas.renderVehicles(); },
+					82: function () {
+						vStop = traffic.vehicle({
+							location: junction1.inComing[2],
+							lane: 2,
+							localY: 350,
+							isStationary: true
+						});
+					},
+					84: function () {
+
+						vStop.removeLocation();
+						vStop.removeVehicle();
+
+					}
 				}
 			});
 
