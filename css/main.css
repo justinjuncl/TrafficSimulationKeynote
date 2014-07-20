@@ -24,3 +24,17 @@ canvas {
 	position: static;
 	width: 1000px;
 }
+
+.el ul {
+
+	list-style: none;
+
+}
+
+.el ul li {
+
+	font-style: italic;
+	display: inline;
+	margin-right: 50px;
+
+}
