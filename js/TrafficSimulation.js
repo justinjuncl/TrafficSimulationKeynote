@@ -2564,30 +2564,6 @@ Vehicle.prototype = {
 
 		}
 
-		// if ( !this.aKeep ) {
-
-		// 	if ( probability(0.1) ) {
-
-		// 		this.aKeep = true;
-
-		// 	}
-
-		// } else {
-
-		// 	newAcceleration = 0;
-		// 	this.aTime += deltaTime;
-
-		// 	if ( this.aTime >= 1 ) {
-
-		// 		this.aTime = 0;
-		// 		this.aKeep = false;
-
-		// 	}
-
-		// }
-
-		//---------------------------------------
-
 		//---------------------------------------
 		// Getting oldSafenessValue
 
@@ -2597,6 +2573,8 @@ Vehicle.prototype = {
 		var pastTime = Math.abs( newSafeness[0] - this.pastSafeness[0] - 1 );
 
 		var oldSafenessValue = ( veryPastTime < pastTime ) ? this.veryPastSafeness[1] : this.pastSafeness[1];
+
+		//---------------------------------------
 
 		//---------------------------------------
 		// Calculating acceleration for lane decision
