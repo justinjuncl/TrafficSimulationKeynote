@@ -1351,6 +1351,8 @@ Road.prototype = {
 
 	insertIntoLane: function ( lane, jD ) {
 
+		jD = this.jD;
+
 		var size = ( probability( this.truckRatio ) ) ? this.truckSize : this.carSize;
 
 		if ( !this.vehicleAtLocation( lane, size / 2 ) ) {
