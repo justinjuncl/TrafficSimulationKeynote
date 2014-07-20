@@ -205,25 +205,27 @@
 
 					<section class="el">
 						<h3>시뮬레이션에 영향을 주는 요소들</h3>
-						<ul>
+						<ul style="margin-top: 30px;">
 							<li>대략적인 차선 변경 소요 시간</li>
 							<li>차선 변경을 하려고 버티는 정도</li>
 							<li>최소 차간 거리</li>
-							<li>제한 속도 지키려는 정도</li>
-							<li>안전 거리 유지정도</li>
+							<li class="fragment highlight-blue">제한 속도 지키려는 정도</li>
+							<li class="fragment highlight-blue">안전 거리 유지하려는 정도</li>
 							<li>차선 변경을 하려는 경향</li>
-							<li>트럭에 대해 느끼는 부담감</li>
+							<li class="fragment highlight-blue">트럭에 대해 느끼는 부담감</li>
 							<li>차선 변경시 기다리는 정도</li>
 							<li>차선 변경시 기다리는 시간의 하한선</li>
 							<li>차선 변경시 기다리는 시간의 상한선</li>
-							<li>운전자의 시야</li>
-							<li>최대로 회전</li>
+							<li class="fragment highlight-blue">운전자의 시야</li>
+							<li>최대 회전 각도</li>
+						</ul>
+						<ul style="margin-top: 50px;">
 							<li>최대 가속도</li>
 							<li>제동의 한계</li>
 							<li>초기 가속도</li>
-							<li>제한속도</li>
+							<li class="fragment highlight-blue">제한 속도</li>
 							<li>초기 속도</li>
-							<li>트럭의 비율</li>
+							<li class="fragment highlight-blue">트럭의 비율</li>
 							<li>도로의 차선 변경을 못하게 할 초반 길이</li>
 							<li>도로 길이</li>
 						</ul>
@@ -630,6 +632,11 @@ function linkify( selector ) {
 
 						vStop.removeLocation();
 						vStop.removeVehicle();
+
+					},
+					88: function () {
+
+						traffic.vehicles.forEach( function (element, index, array) { element.junctionDecision = 1; } );
 
 					}
 				}
