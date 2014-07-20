@@ -1,0 +1,22 @@
+canvas {
+	position: absolute;
+}
+
+
+#trafficContainer {
+
+	position: absolute;
+
+}
+
+#canvasContainer {
+
+	position: absolute;
+	background-color: #F0F0F0;
+
+}
+
+.shadow {
+	box-shadow: 0 0 10px black;
+	display: inline-block;
+}
