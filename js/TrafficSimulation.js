@@ -470,6 +470,9 @@ function mouseMoveListener ( e ) {
 		var panDeltaX = canvas.mouseX - canvas.panStartX;
 		var panDeltaY = canvas.mouseY - canvas.panStartY;
 
+		panDeltaX *= canvas.scale;
+		panDeltaY *= canvas.scale;
+
 		canvas.offsetX += panDeltaX;
 		canvas.offsetY += panDeltaY;
 
@@ -480,23 +483,29 @@ function mouseMoveListener ( e ) {
 
 	if ( canvas.isZooming ) {
 
-		var zoomDeltaY = canvas.mouseY - canvas.zoomStartY;
+		canvas.zoomDeltaX = canvas.mouseX - canvas.zoomStartX;
+		canvas.zoomDeltaY = canvas.mouseY - canvas.zoomStartY;
 
-		canvas.scale *= Math.pow( 1.4, -zoomDeltaY / 200 );
+		canvas.scale = Math.pow( 1.2, -canvas.zoomDeltaY / 200 );
 
-		canvas.offsetX = canvas.zoomStartX - canvas.scale * canvas.zoomStartX;
-		canvas.offsetY = canvas.zoomStartY - canvas.scale * canvas.zoomStartY;
+		// 		canvas.zoomDeltaX *= canvas.scale;
+		// canvas.zoomDeltaY *= canvas.scale;
 
-		canvas.contextBlocks.setTransform(canvas.scale, 0, 0, -canvas.scale, canvas.offsetX, canvas.offsetY);
-		canvas.contextVehicles.setTransform(canvas.scale, 0, 0, -canvas.scale, canvas.offsetX, canvas.offsetY);
+		canvas.contextBlocks.translate( canvas.zoomStartX, canvas.zoomStartY);
+		canvas.contextBlocks.scale( canvas.scale, canvas.scale );
+		canvas.contextBlocks.translate( -canvas.zoomStartX, -canvas.zoomStartY);
+
+		canvas.contextVehicles.translate( canvas.zoomStartX, canvas.zoomStartY);
+		canvas.contextVehicles.scale( canvas.scale, canvas.scale );
+		canvas.contextVehicles.translate( -canvas.zoomStartX, -canvas.zoomStartY);
+
+		// canvas.contextBlocks.setTransform(canvas.scale, 0, 0, -canvas.scale, canvas.offsetX, canvas.offsetY);
+		// canvas.contextVehicles.setTransform(canvas.scale, 0, 0, -canvas.scale, canvas.offsetX, canvas.offsetY);
 
 	}
 
 	canvas.panStartX = canvas.mouseX;
 	canvas.panStartY = canvas.mouseY;
-
-	// canvas.zoomStartX = canvas.mouseX;
-	// canvas.zoomStartY = canvas.mouseY;
 
 	canvas.renderBlocks();
 
@@ -523,8 +532,8 @@ function keyDownListener ( e ) {
 
 			canvas.isZooming = true;
 
-			canvas.zoomStartX = canvas.mouseX;// - canvas.offsetX;
-			canvas.zoomStartY = canvas.mouseY;// - canvas.offsetY;
+			canvas.zoomStartX = canvas.mouseX;
+			canvas.zoomStartY = canvas.mouseY;
 
 			break;
 
@@ -559,6 +568,9 @@ function keyUpListener ( e ) {
 		case 50:
 
 			canvas.isZooming = false;
+
+			canvas.offsetX += canvas.scale * canvas.zoomDeltaX;
+			canvas.offsetY += canvas.scale * canvas.zoomDeltaY;
 
 			break;
 
