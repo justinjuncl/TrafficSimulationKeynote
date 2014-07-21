@@ -55,7 +55,7 @@
 				</section>
 
 				<section data-state="motive">
-					<strong><h2>동기와 목적</h2></strong>
+					<strong><h2>동기</h2></strong>
 					<ul>
 					</ul>
 				</section>
@@ -67,7 +67,7 @@
 						<li>차</li>
 						<li>사이클</li>
 					</ul>
-					<p style="margin-top: 100px;"><a href="#/5/1"><small>시뮬레이션에 영향을 주는 요소들</small></a></p>
+					<p style="margin-top: 100px;"><a href="#/5/1"><small>시뮬레이션에서 조절할 수 있는 요소들</small></a></p>
 				</section>
 
 				<section data-background="#4d7e65">
@@ -243,8 +243,8 @@ updateLocation: function ( deltaTime ) {
 					</section>
 
 					<section>
-						<h3>시뮬레이션에 영향을 주는 요소들</h3>
-						<ul class="el" style="margin-top: 50px;">
+						<h3>시뮬레이션에서 조절할 수 있는 요소들</h3>
+						<ul class="el" style="margin-top: 50px; width: 1200px;">
 							<li>운전자 특성
 								<ul style="margin-top: 10px;">
 									<li>대략적인 차선 변경 소요 시간</li>
@@ -274,7 +274,7 @@ updateLocation: function ( deltaTime ) {
 								</ul>
 							</li>
 						</ul>
-						<p style="margin-top: 100px;"><small><a href="#/2">모델</a></small></p>
+						<p style="margin-top: 80px;"><small><a href="#/2">모델</a></small></p>
 					</section>
 
 				</section>
@@ -373,12 +373,12 @@ updateLocation: function ( deltaTime ) {
 
 				junction1 = traffic.junction({
 					x: 100,
-					y: 740
+					y: 800
 				});
 
 				junction2 = traffic.junction({
 					x: 1340,
-					y: 740
+					y: 800
 				});
 
 				junction3 = traffic.junction({
@@ -420,7 +420,7 @@ updateLocation: function ( deltaTime ) {
 
 			var truckContainer = null;
 
-			var origin = new Vector2( -50, 790 );
+			var origin = new Vector2( -50, 850 );
 			var point = origin;
 			var vStop;
 
@@ -487,7 +487,7 @@ updateLocation: function ( deltaTime ) {
 
 			Reveal.addEventListener( 'zoomJunction', function () {
 
-				point = offset(-200, 2310);
+				point = offset(-200, 2500);
 				canvas.scale = 4;
 				render();
 
@@ -503,7 +503,7 @@ updateLocation: function ( deltaTime ) {
 
 			Reveal.addEventListener( 'zoomDestroyer', function () {
 
-				point = offset(-4400, 300);
+				point = offset(-4420, 300);
 				canvas.scale = 4;
 				render();
 
