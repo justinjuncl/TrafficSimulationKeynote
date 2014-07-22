@@ -3,4 +3,4 @@ TrafficSimulationKeynote
 
 A keynote presenting [TrafficSimulation](https://github.com/justinjuncl/TrafficSimulation)
 
-Click [here](http://rawgit.com/justinjuncl/TrafficSimulationKeynote/master/index.html) to view the keynote
+Click [here](http://goo.gl/BE6H7t) to view the keynote

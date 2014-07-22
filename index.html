@@ -54,12 +54,6 @@
 					<h4>2014년 7월 22일</h4>
 				</section>
 
-				<section data-state="motive">
-					<strong><h2>동기</h2></strong>
-					<ul>
-					</ul>
-				</section>
-
 				<section data-state="model">
 					<h2>모델</h2>
 					<ul>
@@ -67,7 +61,7 @@
 						<li>차</li>
 						<li>사이클</li>
 					</ul>
-					<p style="margin-top: 100px;"><a href="#/5/1"><small>시뮬레이션에서 조절할 수 있는 요소들</small></a></p>
+					<p style="margin-top: 100px;"><a href="#/4/1"><small>시뮬레이션에서 조절할 수 있는 요소들</small></a></p>
 				</section>
 
 				<section data-background="#4d7e65">
@@ -118,7 +112,7 @@
 						<ul>
 							<li><p>더 빨리 가고 싶어서 하는 경우
 								<ul>
-									<li class="fragment">안전 거리</li>
+									<li class="fragment">앞차와의 거리</li>
 									<li class="fragment">앞차의 속도</li>
 									<li class="fragment">트럭의 유무</li>
 								</ul>
@@ -188,7 +182,7 @@ isSafeLaneDecision: function ( i ) {
 					<section data-state="zoomRoadVertical">
 						<h3>속도 변경</h3>
 						<ul>
-							<li class="fragment">안전 거리</li>
+							<li class="fragment">앞차와의 거리</li>
 							<li class="fragment">앞차의 속도</li>
 							<li class="fragment">제한 속도</li>
 							<li class="fragment">옆 차의 깜빡이</li>
@@ -274,7 +268,7 @@ updateLocation: function ( deltaTime ) {
 								</ul>
 							</li>
 						</ul>
-						<p style="margin-top: 80px;"><small><a href="#/2">모델</a></small></p>
+						<p style="margin-top: 50px;"><small><a href="#/1">모델</a></small></p>
 					</section>
 
 				</section>
@@ -373,12 +367,12 @@ updateLocation: function ( deltaTime ) {
 
 				junction1 = traffic.junction({
 					x: 100,
-					y: 800
+					y: 760
 				});
 
 				junction2 = traffic.junction({
 					x: 1340,
-					y: 800
+					y: 760
 				});
 
 				junction3 = traffic.junction({
@@ -420,7 +414,7 @@ updateLocation: function ( deltaTime ) {
 
 			var truckContainer = null;
 
-			var origin = new Vector2( -50, 850 );
+			var origin = new Vector2( -50, 810 );
 			var point = origin;
 			var vStop;
 
@@ -447,8 +441,8 @@ updateLocation: function ( deltaTime ) {
 
 						traffic.vehicles.forEach( function (element, index, array) {
 
-							element.junctionDecision = 1;
-							element.wantedLaneDecision = 1;
+							element.junctionDecision = -1;
+							element.wantedLaneDecision = -1;
 
 						 } );
 
@@ -487,7 +481,7 @@ updateLocation: function ( deltaTime ) {
 
 			Reveal.addEventListener( 'zoomJunction', function () {
 
-				point = offset(-200, 2500);
+				point = offset(-200, 2380);
 				canvas.scale = 4;
 				render();
 
